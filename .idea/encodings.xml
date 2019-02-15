@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-producer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jinternals-event-bus-actuators" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jinternals-event-bus-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jinternals-event-bus-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jinternals-event-bus-producer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jinternals-event-bus-selectors-maven-plugin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jinternals-event-bus-starter-activemq" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jinternals-event-bus-starter-rabbitmq" charset="UTF-8" />
+  </component>
+</project>

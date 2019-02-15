@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="demo-consumer (1)" />
+        <module name="jinternals-event-bus-actuators" />
+        <module name="jinternals-event-bus-common" />
+        <module name="jinternals-event-bus-consumer" />
+        <module name="jinternals-event-bus-producer" />
+        <module name="jinternals-event-bus-starter-activemq" />
+        <module name="jinternals-event-bus-starter-rabbitmq" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="demo" target="1.8" />
+      <module name="demo-consumer" target="1.8" />
+      <module name="demo-consumer (1)" target="1.8" />
+      <module name="demo-producer" target="1.8" />
+      <module name="jinternals-event-bus" target="1.8" />
+      <module name="jinternals-event-bus-actuators" target="1.8" />
+      <module name="jinternals-event-bus-common" target="1.8" />
+      <module name="jinternals-event-bus-configuration" target="1.8" />
+      <module name="jinternals-event-bus-consumer" target="1.8" />
+      <module name="jinternals-event-bus-converter" target="1.8" />
+      <module name="jinternals-event-bus-producer" target="1.8" />
+      <module name="jinternals-event-bus-selectors-maven-plugin" target="1.8" />
+      <module name="jinternals-event-bus-starter-activemq" target="1.8" />
+      <module name="jinternals-event-bus-starter-kafka" target="1.8" />
+      <module name="jinternals-event-bus-starter-rabbitmq" target="1.8" />
+      <module name="jinternals-event-bus-test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="demo" options="-parameters" />
+      <module name="demo-consumer" options="-parameters" />
+      <module name="demo-consumer (1)" options="-parameters" />
+      <module name="demo-producer" options="-parameters" />
+    </option>
+  </component>
+</project>

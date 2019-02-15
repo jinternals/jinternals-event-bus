@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/demo-producer/demo-consumer (1).iml" filepath="$PROJECT_DIR$/demo-producer/demo-consumer (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/jinternals-event-bus.iml" filepath="$PROJECT_DIR$/.idea/jinternals-event-bus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jinternals-event-bus-actuators/jinternals-event-bus-actuators.iml" filepath="$PROJECT_DIR$/jinternals-event-bus-actuators/jinternals-event-bus-actuators.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jinternals-event-bus-common/jinternals-event-bus-common.iml" filepath="$PROJECT_DIR$/jinternals-event-bus-common/jinternals-event-bus-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jinternals-event-bus-consumer/jinternals-event-bus-consumer.iml" filepath="$PROJECT_DIR$/jinternals-event-bus-consumer/jinternals-event-bus-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jinternals-event-bus-producer/jinternals-event-bus-producer.iml" filepath="$PROJECT_DIR$/jinternals-event-bus-producer/jinternals-event-bus-producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jinternals-event-bus-starter-activemq/jinternals-event-bus-starter-activemq.iml" filepath="$PROJECT_DIR$/jinternals-event-bus-starter-activemq/jinternals-event-bus-starter-activemq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jinternals-event-bus-starter-rabbitmq/jinternals-event-bus-starter-rabbitmq.iml" filepath="$PROJECT_DIR$/jinternals-event-bus-starter-rabbitmq/jinternals-event-bus-starter-rabbitmq.iml" />
+    </modules>
+  </component>
+</project>
