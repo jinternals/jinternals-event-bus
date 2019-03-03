@@ -5,6 +5,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.pool.PooledConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jms.connection.JmsTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -16,12 +17,13 @@ public class ActivemqBrokerConfiguration {
     @Bean("activemqTransactionManager")
     public PlatformTransactionManager activemqTransactionManager(ActivemqEventBusProperties activemqEventBusProperties) {
         JmsTransactionManager transactionManager = new JmsTransactionManager();
-        transactionManager.setConnectionFactory(activeMqConnectionFactory(activemqEventBusProperties));
+        transactionManager.setConnectionFactory(activemqPooledConnectionFactory(activemqEventBusProperties));
         return transactionManager;
     }
 
+    @Primary
     @Bean("activemqPooledConnectionFactory")
-    public ConnectionFactory activeMqConnectionFactory(ActivemqEventBusProperties activemqEventBusProperties) {
+    public PooledConnectionFactory activemqPooledConnectionFactory(ActivemqEventBusProperties activemqEventBusProperties) {
         return new PooledConnectionFactory(activemqConnectionFactory(activemqEventBusProperties));
     }
 

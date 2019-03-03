@@ -30,6 +30,7 @@
 
         <module>jinternals-event-bus-starter-activemq</module>
         <module>jinternals-event-bus-starter-rabbitmq</module>
+        <module>jinternals-event-bus-demo</module>
     </modules>
 
 
