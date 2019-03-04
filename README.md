@@ -14,3 +14,7 @@ This is a simple framework for implementing event-bus pattern.
 #### Example: 
 
 https://github.com/jinternals/jinternals-event-bus-demo
+
+### Links:
+
+https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageBus.html <br>
