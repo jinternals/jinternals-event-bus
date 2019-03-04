@@ -19,7 +19,7 @@ public class ActivemqEventBusProperties {
 
     private String eventPackage;
 
-    private boolean exclusiveConsumer;
+    private boolean exclusiveConsumer = true;
 
     @NestedConfigurationProperty
     private Producer producer;

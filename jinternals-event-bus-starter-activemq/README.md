@@ -1,6 +1,9 @@
 # jinternals-event-bus-starter-activemq
 
 
+![alt Event Bus](../images/rabbitmq/event-bus.jpg)
+
+
 >#### Maven Dependency:
 ```xml
 <dependency>
