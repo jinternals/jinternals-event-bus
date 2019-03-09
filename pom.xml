@@ -28,9 +28,12 @@
         <module>jinternals-event-bus-consumer</module>
         <module>jinternals-event-bus-producer</module>
 
-        <module>jinternals-event-bus-starter-activemq</module>
         <module>jinternals-event-bus-starter-rabbitmq</module>
         <module>jinternals-event-bus-demo</module>
+
+        <module>jinternals-event-bus-activemq-configuration</module>
+        <module>jinternals-event-bus-starter-activemq-consumer</module>
+        <module>jinternals-event-bus-starter-activemq-producer</module>
     </modules>
 
 

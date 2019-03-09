@@ -7,7 +7,7 @@
 >#### Maven Dependency:
 ```xml
 <dependency>
-    <artifactId>jinternals-event-bus-starter-activemq</artifactId>
+    <artifactId>jinternals-event-bus-starter-activemq-consumer</artifactId>
     <groupId>com.jinternals.event.bus</groupId>
     <version>${latest-version}</version>
 </dependency>
@@ -24,8 +24,6 @@ event:
         url: tcp://localhost:61616
         user-name: <user-name>
         password: <password>      
-      producer:
-        enabled: false
       consumer:
         destination: Event.Bus.Demo
         concurrency: 1-1

@@ -2,6 +2,8 @@ package com.jinternals.event.bus.activemq.configuration;
 
 
 import com.jinternals.event.bus.activemq.gateway.ActivemqEventGateway;
+import com.jinternals.event.bus.activemq.properties.ActivemqEventBusConsumerProperties;
+import com.jinternals.event.bus.activemq.properties.ActivemqEventBusProducerProperties;
 import com.jinternals.event.bus.activemq.properties.ActivemqEventBusProperties;
 import com.jinternals.event.bus.producer.gateway.EventGateway;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,12 +24,12 @@ public class ActivemqProducerConfiguration {
     public JmsTemplate activemqJmsTemplate(
             @Qualifier("activemqPooledConnectionFactory") ConnectionFactory connectionFactory,
             @Qualifier("activemqMessageConverter") MessageConverter messageConverter,
-            ActivemqEventBusProperties activemqEventBusProperties) {
+            ActivemqEventBusProducerProperties activemqEventBusProducerProperties) {
         JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory);
-        jmsTemplate.setDefaultDestinationName(activemqEventBusProperties.getProducer().getDestination());
+        jmsTemplate.setDefaultDestinationName(activemqEventBusProducerProperties.getProducer().getDestination());
         jmsTemplate.setMessageConverter(messageConverter);
         jmsTemplate.setSessionTransacted(true);
-        jmsTemplate.setPubSubDomain(activemqEventBusProperties.getProducer().getPubSub());
+        jmsTemplate.setPubSubDomain(activemqEventBusProducerProperties.getProducer().getPubSub());
         return jmsTemplate;
     }
 

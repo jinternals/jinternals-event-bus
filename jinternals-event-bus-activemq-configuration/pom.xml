@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jinternals-event-bus-starter-activemq</artifactId>
+    <artifactId>jinternals-event-bus-activemq-configuration</artifactId>
 
      <dependencies>
 

@@ -21,12 +21,6 @@ public class ActivemqEventBusProperties {
 
     private boolean exclusiveConsumer = true;
 
-    @NestedConfigurationProperty
-    private Producer producer;
-
-    @NestedConfigurationProperty
-    private Consumer consumer;
-
     public String getEventPackage() {
         return eventPackage;
     }
@@ -49,22 +43,6 @@ public class ActivemqEventBusProperties {
 
     public void setListenerPackage(String listenerPackage) {
         this.listenerPackage = listenerPackage;
-    }
-
-    public Producer getProducer() {
-        return producer;
-    }
-
-    public void setProducer(Producer producer) {
-        this.producer = producer;
-    }
-
-    public Consumer getConsumer() {
-        return consumer;
-    }
-
-    public void setConsumer(Consumer consumer) {
-        this.consumer = consumer;
     }
 
     public boolean isExclusiveConsumer() {

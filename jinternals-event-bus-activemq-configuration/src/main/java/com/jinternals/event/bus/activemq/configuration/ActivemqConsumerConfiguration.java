@@ -1,5 +1,6 @@
 package com.jinternals.event.bus.activemq.configuration;
 
+import com.jinternals.event.bus.activemq.properties.ActivemqEventBusConsumerProperties;
 import com.jinternals.event.bus.activemq.properties.ActivemqEventBusProperties;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -24,7 +25,7 @@ public class ActivemqConsumerConfiguration {
             @Qualifier("activemqPooledConnectionFactory") ConnectionFactory connectionFactory,
             @Qualifier("activemqTransactionManager") PlatformTransactionManager transactionManager,
             @Qualifier("activemqMessageConverter") MessageConverter messageConverter,
-            ActivemqEventBusProperties properties) {
+            ActivemqEventBusConsumerProperties properties) {
         return Jms
                 .messageDrivenChannelAdapter(connectionFactory)
                 .configureListenerContainer(spec -> setup(spec.get(), transactionManager, messageConverter, properties))
@@ -37,7 +38,7 @@ public class ActivemqConsumerConfiguration {
     public void setup(DefaultMessageListenerContainer container,
                       PlatformTransactionManager transactionManager,
                       MessageConverter messageConverter,
-                      ActivemqEventBusProperties activemqEventBusProperties) {
+                      ActivemqEventBusConsumerProperties activemqEventBusProperties) {
         container.setSessionTransacted(true);
         container.setCacheLevel(CACHE_CONSUMER);
         container.setConcurrency(activemqEventBusProperties.getConsumer().getConcurrency());
