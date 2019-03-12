@@ -23,7 +23,7 @@ public class ActivemqConsumerConfiguration {
     @Bean("activemqMessageProducerSupport")
     public MessageProducerSupport activemqMessageProducerSupport(
             @Qualifier("activemqPooledConnectionFactory") ConnectionFactory connectionFactory,
-            @Qualifier("activemqTransactionManager") PlatformTransactionManager transactionManager,
+            @Qualifier("activemqConsumerTransactionManager") PlatformTransactionManager transactionManager,
             @Qualifier("activemqMessageConverter") MessageConverter messageConverter,
             ActivemqEventBusConsumerProperties properties) {
         return Jms

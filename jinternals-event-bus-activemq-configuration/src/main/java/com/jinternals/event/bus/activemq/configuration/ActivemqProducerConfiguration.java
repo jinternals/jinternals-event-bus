@@ -14,6 +14,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MessageConverter;
 
 import javax.jms.ConnectionFactory;
+import javax.jms.Session;
 
 
 @Configuration

@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.jinternals.event.bus.activemq.configuration.ActivemqEventBusConsumerAutoConfiguration
+  com.jinternals.event.bus.activemq.configuration.ActivemqEventBusConsumerAutoConfiguration,\
+  com.jinternals.event.bus.activemq.configuration.ActivemqTransactionManagerConfiguration

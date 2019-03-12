@@ -14,8 +14,9 @@ import javax.jms.ConnectionFactory;
 @Configuration
 public class ActivemqBrokerConfiguration {
 
-    @Bean("activemqTransactionManager")
-    public PlatformTransactionManager activemqTransactionManager(ActivemqEventBusProperties activemqEventBusProperties) {
+
+    @Bean("activemqJmsTransactionManager")
+    public PlatformTransactionManager activemqJmsTransactionManager(ActivemqEventBusProperties activemqEventBusProperties) {
         JmsTransactionManager transactionManager = new JmsTransactionManager();
         transactionManager.setConnectionFactory(activemqPooledConnectionFactory(activemqEventBusProperties));
         return transactionManager;
