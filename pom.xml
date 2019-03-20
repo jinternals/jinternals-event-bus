@@ -28,11 +28,13 @@
         <module>jinternals-event-bus-consumer</module>
         <module>jinternals-event-bus-producer</module>
 
-        <module>jinternals-event-bus-starter-rabbitmq</module>
+        <module>jinternals-event-bus-rabbitmq-configuration</module>
 
         <module>jinternals-event-bus-activemq-configuration</module>
         <module>jinternals-event-bus-starter-activemq-consumer</module>
         <module>jinternals-event-bus-starter-activemq-producer</module>
+        <module>jinternals-event-bus-starter-rabbitmq-consumer</module>
+        <module>jinternals-event-bus-starter-rabbitmq-producer</module>
     </modules>
 
 
@@ -80,12 +82,6 @@
 
             <dependency>
                 <artifactId>jinternals-event-bus-common</artifactId>
-                <groupId>com.jinternals.event.bus</groupId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <artifactId>jinternals-event-bus-configuration</artifactId>
                 <groupId>com.jinternals.event.bus</groupId>
                 <version>${project.version}</version>
             </dependency>

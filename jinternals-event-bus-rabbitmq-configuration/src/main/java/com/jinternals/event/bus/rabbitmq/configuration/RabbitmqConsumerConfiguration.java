@@ -1,5 +1,8 @@
 package com.jinternals.event.bus.rabbitmq.configuration;
 
+import com.jinternals.event.bus.rabbitmq.properties.RabbitmqEventBusConsumerProperties;
+import com.jinternals.event.bus.rabbitmq.properties.RabbitmqEventBusProperties;
+import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.support.converter.MessageConverter;
@@ -10,6 +13,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.amqp.dsl.Amqp;
 import org.springframework.integration.endpoint.MessageProducerSupport;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.util.backoff.BackOff;
+import org.springframework.util.backoff.FixedBackOff;
+
+import static org.springframework.amqp.core.AcknowledgeMode.MANUAL;
 
 @Configuration
 @ConditionalOnProperty(prefix = "event.bus.rabbitmq.consumer", name = "enabled", havingValue = "true", matchIfMissing = true)
@@ -30,16 +37,21 @@ public class RabbitmqConsumerConfiguration {
     @Bean("rabbitmqSimpleMessageListenerContainer")
     public SimpleMessageListenerContainer rabbitmqSimpleMessageListenerContainer(
             @Qualifier("rabbitmqCachingConnectionFactory") ConnectionFactory connectionFactory,
-            @Qualifier("rabbitmqTransactionManager") PlatformTransactionManager transactionManager,
+            @Qualifier("rabbitmqConsumerTransactionManager") PlatformTransactionManager transactionManager,
             @Qualifier("rabbitmqEventBusMessageConverter") MessageConverter rabbitmqEventBusMessageConverter,
-            RabbitmqEventBusProperties rabbitmqEventBusProperties) {
+            RabbitmqEventBusConsumerProperties rabbitmqEventBusConsumerProperties) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         container.setTransactionManager(transactionManager);
         container.setChannelTransacted(true);
-        container.setQueueNames(rabbitmqEventBusProperties.getConsumer().getDestination());
-        container.setConcurrency(rabbitmqEventBusProperties.getConsumer().getConcurrency());
-        //container.setMessageConverter(rabbitmqEventBusMessageConverter);
+        container.setQueueNames(rabbitmqEventBusConsumerProperties.getConsumer().getDestination());
+        container.setConcurrency(rabbitmqEventBusConsumerProperties.getConsumer().getConcurrency());
+        container.setAcknowledgeMode(MANUAL);
+        container.setPrefetchCount(1);
+        container.setDefaultRequeueRejected(true);
+        BackOff recoveryBackOff = new FixedBackOff(5000, 3);
+        container.setRecoveryBackOff(recoveryBackOff);
+
         return container;
     }
 

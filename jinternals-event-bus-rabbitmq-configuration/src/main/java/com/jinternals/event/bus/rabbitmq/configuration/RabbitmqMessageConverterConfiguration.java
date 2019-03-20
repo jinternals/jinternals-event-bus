@@ -1,5 +1,7 @@
 package com.jinternals.event.bus.rabbitmq.configuration;
 
+import com.jinternals.event.bus.common.utils.EventUtils;
+import com.jinternals.event.bus.rabbitmq.properties.RabbitmqEventBusProperties;
 import org.springframework.amqp.support.converter.DefaultJackson2JavaTypeMapper;
 import org.springframework.amqp.support.converter.Jackson2JavaTypeMapper;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -35,6 +37,14 @@ public class RabbitmqMessageConverterConfiguration {
         };
         classMapper.setIdClassMapping(eventMappings);
         return classMapper;
+    }
+
+
+    @Bean("rabbitmqEventMappings")
+    public Map<String, Class<?>> getTypeMapping(RabbitmqEventBusProperties rabbitmqEventBusProperties) {
+
+        return EventUtils.getTypeMapping(rabbitmqEventBusProperties.getEventPackage());
+
     }
 
 }

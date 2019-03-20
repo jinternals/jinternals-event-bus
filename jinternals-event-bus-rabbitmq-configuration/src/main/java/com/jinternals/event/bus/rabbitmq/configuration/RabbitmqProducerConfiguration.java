@@ -3,6 +3,8 @@ package com.jinternals.event.bus.rabbitmq.configuration;
 
 import com.jinternals.event.bus.producer.gateway.EventGateway;
 import com.jinternals.event.bus.rabbitmq.gateway.RabbitmqEventGateway;
+import com.jinternals.event.bus.rabbitmq.properties.RabbitmqEventBusProducerProperties;
+import com.jinternals.event.bus.rabbitmq.properties.RabbitmqEventBusProperties;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -21,11 +23,11 @@ public class RabbitmqProducerConfiguration {
     public AmqpTemplate rabbitmqTemplate(
             @Qualifier("rabbitmqCachingConnectionFactory") ConnectionFactory connectionFactory,
             @Qualifier("rabbitmqEventBusMessageConverter") MessageConverter messageConverter,
-            RabbitmqEventBusProperties rabbitmqEventBusProperties) {
+            RabbitmqEventBusProducerProperties rabbitmqEventBusProducerProperties) {
 
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(messageConverter);
-        rabbitTemplate.setExchange(rabbitmqEventBusProperties.getProducer().getDestination());
+        rabbitTemplate.setExchange(rabbitmqEventBusProducerProperties.getProducer().getDestination());
         return rabbitTemplate;
     }
 

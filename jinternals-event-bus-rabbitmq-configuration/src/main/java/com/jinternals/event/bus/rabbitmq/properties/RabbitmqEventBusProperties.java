@@ -1,8 +1,6 @@
-package com.jinternals.event.bus.rabbitmq.configuration;
+package com.jinternals.event.bus.rabbitmq.properties;
 
 import com.jinternals.event.bus.common.configuration.Broker;
-import com.jinternals.event.bus.common.configuration.Consumer;
-import com.jinternals.event.bus.common.configuration.Producer;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
@@ -18,12 +16,6 @@ public class RabbitmqEventBusProperties {
     private String listenerPackage;
 
     private String eventPackage;
-
-    @NestedConfigurationProperty
-    private Producer producer;
-
-    @NestedConfigurationProperty
-    private Consumer consumer;
 
     public String getEventPackage() {
         return eventPackage;
@@ -49,19 +41,4 @@ public class RabbitmqEventBusProperties {
         this.listenerPackage = listenerPackage;
     }
 
-    public Producer getProducer() {
-        return producer;
-    }
-
-    public void setProducer(Producer producer) {
-        this.producer = producer;
-    }
-
-    public Consumer getConsumer() {
-        return consumer;
-    }
-
-    public void setConsumer(Consumer consumer) {
-        this.consumer = consumer;
-    }
 }

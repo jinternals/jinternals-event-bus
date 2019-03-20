@@ -2,6 +2,7 @@ package com.jinternals.event.bus.rabbitmq.configuration;
 
 import com.jinternals.event.bus.consumer.channel.ChannelNameProvider;
 import com.jinternals.event.bus.consumer.channel.EventChannelBeanFactoryPostProcessor;
+import com.jinternals.event.bus.rabbitmq.properties.RabbitmqEventBusProperties;
 import com.jinternals.event.bus.rabbitmq.providers.RabbitmqChannelNameProvider;
 import com.jinternals.event.bus.common.utils.EventUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -42,13 +43,6 @@ public class RabbitmqChannelConfiguration {
                 .get();
     }
 
-
-    @Bean("rabbitmqEventMappings")
-    public Map<String, Class<?>> getTypeMapping(RabbitmqEventBusProperties rabbitmqEventBusProperties) {
-
-        return EventUtils.getTypeMapping(rabbitmqEventBusProperties.getEventPackage());
-
-    }
 
 
 }

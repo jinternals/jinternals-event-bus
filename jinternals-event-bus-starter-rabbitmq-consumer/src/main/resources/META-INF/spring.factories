@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.jinternals.event.bus.rabbitmq.configuration.RabbitmqEventBusConsumerAutoConfiguration,\
+  com.jinternals.event.bus.rabbitmq.configuration.RabbitmqTransactionManagerConfiguration

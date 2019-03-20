@@ -1,6 +1,7 @@
 package com.jinternals.event.bus.rabbitmq.configuration;
 
 
+import com.jinternals.event.bus.rabbitmq.properties.RabbitmqEventBusProperties;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.transaction.RabbitTransactionManager;
 import org.springframework.beans.factory.annotation.Qualifier;
