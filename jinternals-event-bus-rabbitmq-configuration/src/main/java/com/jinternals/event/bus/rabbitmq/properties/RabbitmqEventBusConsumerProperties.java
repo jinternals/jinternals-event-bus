@@ -1,6 +1,7 @@
 package com.jinternals.event.bus.rabbitmq.properties;
 
 import com.jinternals.event.bus.common.configuration.Consumer;
+import com.jinternals.event.bus.common.configuration.Retry;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
@@ -16,5 +17,6 @@ public class RabbitmqEventBusConsumerProperties {
     public void setConsumer(Consumer consumer) {
         this.consumer = consumer;
     }
+
 }
 

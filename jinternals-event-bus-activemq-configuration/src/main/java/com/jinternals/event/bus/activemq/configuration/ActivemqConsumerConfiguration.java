@@ -10,6 +10,8 @@ import org.springframework.integration.endpoint.MessageProducerSupport;
 import org.springframework.integration.jms.dsl.Jms;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
 import org.springframework.jms.support.converter.MessageConverter;
+import org.springframework.retry.interceptor.RetryInterceptorBuilder;
+import org.springframework.retry.interceptor.StatefulRetryOperationsInterceptor;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.jms.ConnectionFactory;
@@ -25,11 +27,11 @@ public class ActivemqConsumerConfiguration {
             @Qualifier("activemqPooledConnectionFactory") ConnectionFactory connectionFactory,
             @Qualifier("activemqConsumerTransactionManager") PlatformTransactionManager transactionManager,
             @Qualifier("activemqMessageConverter") MessageConverter messageConverter,
-            ActivemqEventBusConsumerProperties properties) {
+            ActivemqEventBusConsumerProperties activemqEventBusConsumerProperties) {
         return Jms
                 .messageDrivenChannelAdapter(connectionFactory)
-                .configureListenerContainer(spec -> setup(spec.get(), transactionManager, messageConverter, properties))
-                .destination(properties.getConsumer().getDestination())
+                .configureListenerContainer(spec -> setup(spec.get(), transactionManager, messageConverter, activemqEventBusConsumerProperties))
+                .destination(activemqEventBusConsumerProperties.getConsumer().getDestination())
                 .jmsMessageConverter(messageConverter)
                 .autoStartup(true)
                 .get();

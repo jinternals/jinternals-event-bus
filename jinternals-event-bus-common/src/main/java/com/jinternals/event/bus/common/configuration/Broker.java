@@ -3,7 +3,6 @@ package com.jinternals.event.bus.common.configuration;
 
 public class Broker {
 
-
     private String url;
     private String userName;
     private String password;

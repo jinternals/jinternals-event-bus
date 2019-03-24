@@ -9,8 +9,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.jms.connection.JmsTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import javax.jms.ConnectionFactory;
-
 @Configuration
 public class ActivemqBrokerConfiguration {
 

@@ -19,8 +19,6 @@ public class ActivemqEventBusProperties {
 
     private String eventPackage;
 
-    private boolean exclusiveConsumer = true;
-
     public String getEventPackage() {
         return eventPackage;
     }
@@ -45,11 +43,4 @@ public class ActivemqEventBusProperties {
         this.listenerPackage = listenerPackage;
     }
 
-    public boolean isExclusiveConsumer() {
-        return exclusiveConsumer;
-    }
-
-    public void setExclusiveConsumer(boolean exclusiveConsumer) {
-        this.exclusiveConsumer = exclusiveConsumer;
-    }
 }

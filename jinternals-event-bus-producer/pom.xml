@@ -11,5 +11,11 @@
 
     <artifactId>jinternals-event-bus-producer</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

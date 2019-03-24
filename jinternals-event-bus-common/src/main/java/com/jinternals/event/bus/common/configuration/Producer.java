@@ -3,17 +3,19 @@ package com.jinternals.event.bus.common.configuration;
 
 public class Producer {
 
-    private Boolean enabled;
+    private boolean enabled;
 
     private String destination;
 
-    private Boolean isPubSub;
+    private boolean isPubSub;
 
-    public Boolean getEnabled() {
+    private boolean orderedDelivery;
+
+    public boolean getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(Boolean enabled) {
+    public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -25,11 +27,19 @@ public class Producer {
         this.destination = destination;
     }
 
-    public Boolean getPubSub() {
+    public boolean getPubSub() {
         return isPubSub;
     }
 
-    public void setPubSub(Boolean pubSub) {
+    public void setPubSub(boolean pubSub) {
         isPubSub = pubSub;
+    }
+
+    public boolean getOrderedDelivery() {
+        return orderedDelivery;
+    }
+
+    public void setOrderedDelivery(boolean orderedDelivery) {
+        this.orderedDelivery = orderedDelivery;
     }
 }

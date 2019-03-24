@@ -37,7 +37,7 @@ public class ActivemqProducerConfiguration {
     @Bean
     public EventGateway activemqEventGateway(
             @Qualifier("activemqJmsTemplate") JmsTemplate jmsTemplate,
-            ActivemqEventBusProperties activemqEventBusProperties) {
-        return new ActivemqEventGateway(jmsTemplate, activemqEventBusProperties);
+            ActivemqEventBusProducerProperties activemqEventBusProducerProperties) {
+        return new ActivemqEventGateway(jmsTemplate, activemqEventBusProducerProperties);
     }
 }

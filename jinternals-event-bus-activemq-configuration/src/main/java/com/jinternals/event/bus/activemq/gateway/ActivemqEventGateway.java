@@ -1,31 +1,34 @@
 package com.jinternals.event.bus.activemq.gateway;
 
+import com.jinternals.event.bus.activemq.properties.ActivemqEventBusProducerProperties;
 import com.jinternals.event.bus.activemq.properties.ActivemqEventBusProperties;
-import com.jinternals.event.bus.common.annotations.EventId;
-import com.jinternals.event.bus.producer.gateway.EventGateway;
+import com.jinternals.event.bus.producer.gateway.AbstractEventGateway;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.util.ReflectionUtils;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
 import java.util.Map;
 
-import static com.jinternals.event.bus.common.EventBusConstants.MESSAGE_HEADER_TYPE;
+import static java.util.Objects.nonNull;
 
-public class ActivemqEventGateway implements EventGateway {
+public class ActivemqEventGateway extends AbstractEventGateway {
+
+    Logger logger = LoggerFactory.getLogger(ActivemqEventGateway.class);
 
     private JmsTemplate template;
-    private ActivemqEventBusProperties activemqEventBusProperties;
+    private ActivemqEventBusProducerProperties  activemqEventBusProducerProperties;
 
-    public ActivemqEventGateway(JmsTemplate template, ActivemqEventBusProperties activemqEventBusProperties) {
+    public ActivemqEventGateway(JmsTemplate template, ActivemqEventBusProducerProperties activemqEventBusProducerProperties) {
         this.template = template;
-        this.activemqEventBusProperties = activemqEventBusProperties;
+        this.activemqEventBusProducerProperties = activemqEventBusProducerProperties;
     }
 
     @Override
     public void publish(Object event) {
         template.convertAndSend(event, message -> {
-            setHeaders(event, message);
+            setCommonPropertyAndHeaders(message, event);
             return message;
         });
     }
@@ -34,35 +37,48 @@ public class ActivemqEventGateway implements EventGateway {
     @Override
     public void publish(Object event, Map<String, Object> headers) {
         template.convertAndSend(event, message -> {
+            setCommonPropertyAndHeaders(message, event);
 
+            headers
+                    .entrySet()
+                    .stream()
+                    .forEach(header -> {
+                        try {
+                            message.setObjectProperty(header.getKey(), header.getValue());
+                        } catch (JMSException exception) {
+                            logger.error(exception.getMessage(), exception);
+                        }
+                    });
 
-            for (Map.Entry<String, Object> header : headers.entrySet()) {
-                message.setObjectProperty(header.getKey(), header.getValue());
-            }
-
-            setHeaders(event, message);
             return message;
         });
     }
 
-    private void setHeaders(Object event, Message message) throws JMSException {
-        if (activemqEventBusProperties.isExclusiveConsumer()) {
 
-            ReflectionUtils.doWithFields(event.getClass(), field -> {
+    private void setCommonPropertyAndHeaders(Message message, Object event) throws JMSException {
 
-                if (field.isAnnotationPresent(EventId.class)) {
-                    field.setAccessible(true);
-                    Object value = ReflectionUtils.getField(field, event);
-                    try {
-                        message.setObjectProperty("JMSXGroupID", value);
-                    } catch (JMSException e) {
-                        e.printStackTrace();
-                    }
-                }
+        getHeaders(event)
+                .entrySet()
+                .stream()
+                .forEach(header -> setHeader(message, header));
 
-            });
+
+        if (activemqEventBusProducerProperties.getProducer().getOrderedDelivery()) {
+            Object routingKey = getHeaders(event).get(EVENT_HEADER_ROUTING_KEY);
+            if (nonNull(routingKey)) {
+                message.setObjectProperty("JMSXGroupID", routingKey);
+            }
         }
-        message.setStringProperty(MESSAGE_HEADER_TYPE, event.getClass().getName());
+
     }
+
+    private void setHeader(Message message, Map.Entry<String, String> header) {
+        try {
+            message.setStringProperty(header.getKey(), header.getValue());
+        } catch (JMSException exception) {
+            logger.error(exception.getMessage(), exception);
+        }
+    }
+
 
 }
