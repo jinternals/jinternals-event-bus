@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jinternals/jinternals-event-bus.svg?branch=master)](https://travis-ci.org/jinternals/jinternals-event-bus)
 [![codecov](https://codecov.io/gh/jinternals/jinternals-event-bus/branch/master/graph/badge.svg)](https://codecov.io/gh/jinternals/jinternals-event-bus)
 # jinternals-event-bus
 
