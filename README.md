@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/jinternals/jinternals-event-bus/branch/master/graph/badge.svg)](https://codecov.io/gh/jinternals/jinternals-event-bus)
 # jinternals-event-bus
 
 This is a simple framework for implementing event-bus pattern.
