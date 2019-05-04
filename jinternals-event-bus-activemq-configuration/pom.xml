@@ -19,6 +19,16 @@
          </dependency>
 
          <dependency>
+             <artifactId>jinternals-event-bus-consumer</artifactId>
+             <groupId>com.jinternals.event.bus</groupId>
+         </dependency>
+
+         <dependency>
+             <artifactId>jinternals-event-bus-producer</artifactId>
+             <groupId>com.jinternals.event.bus</groupId>
+         </dependency>
+
+         <dependency>
              <groupId>com.jinternals.event.bus</groupId>
              <artifactId>jinternals-event-bus-common</artifactId>
          </dependency>

@@ -9,9 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jinternals-event-bus-rabbitmq-configuration</artifactId>
+    <artifactId>jinternals-event-bus-kafka-configuration</artifactId>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -39,7 +40,8 @@
 
         <dependency>
             <groupId>org.springframework.integration</groupId>
-            <artifactId>spring-integration-amqp</artifactId>
+            <artifactId>spring-integration-kafka</artifactId>
+            <version>3.1.0.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -47,5 +49,7 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+
     </dependencies>
+
 </project>

@@ -1,7 +1,7 @@
 package com.jinternals.event.bus.activemq.gateway;
 
 import com.jinternals.event.bus.activemq.properties.ActivemqEventBusProducerProperties;
-import com.jinternals.event.bus.activemq.properties.ActivemqEventBusProperties;
+import com.jinternals.event.bus.common.headers.EventHeaders;
 import com.jinternals.event.bus.producer.gateway.AbstractEventGateway;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,10 +15,10 @@ import static java.util.Objects.nonNull;
 
 public class ActivemqEventGateway extends AbstractEventGateway {
 
-    Logger logger = LoggerFactory.getLogger(ActivemqEventGateway.class);
+    private static Logger logger = LoggerFactory.getLogger(ActivemqEventGateway.class);
 
     private JmsTemplate template;
-    private ActivemqEventBusProducerProperties  activemqEventBusProducerProperties;
+    private ActivemqEventBusProducerProperties activemqEventBusProducerProperties;
 
     public ActivemqEventGateway(JmsTemplate template, ActivemqEventBusProducerProperties activemqEventBusProducerProperties) {
         this.template = template;
@@ -64,7 +64,7 @@ public class ActivemqEventGateway extends AbstractEventGateway {
 
 
         if (activemqEventBusProducerProperties.getProducer().getOrderedDelivery()) {
-            Object routingKey = getHeaders(event).get(EVENT_HEADER_ROUTING_KEY);
+            Object routingKey = getHeaders(event).get(EventHeaders.EVENT_HEADER_ROUTING_KEY);
             if (nonNull(routingKey)) {
                 message.setObjectProperty("JMSXGroupID", routingKey);
             }

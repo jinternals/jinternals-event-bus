@@ -9,20 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jinternals-event-bus-producer</artifactId>
+    <artifactId>jinternals-event-bus-starter-kafka-consumer</artifactId>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>com.jinternals.event.bus</groupId>
-            <artifactId>jinternals-event-bus-common</artifactId>
+            <artifactId>jinternals-event-bus-kafka-configuration</artifactId>
+            <version>${project.version}</version>
         </dependency>
-
     </dependencies>
 
 </project>

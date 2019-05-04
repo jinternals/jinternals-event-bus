@@ -1,15 +1,11 @@
 package com.jinternals.event.bus.rabbitmq.gateway;
 
-import com.jinternals.event.bus.common.EventBusConstants;
+import com.jinternals.event.bus.common.headers.EventHeaders;
 import com.jinternals.event.bus.producer.gateway.AbstractEventGateway;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Message;
 
 import java.util.Map;
-import java.util.UUID;
-
-import static com.jinternals.event.bus.common.EventBusConstants.EVENT_HEADER_EVENT_ID;
-
 
 public class RabbitmqEventGateway extends AbstractEventGateway {
 
@@ -48,7 +44,7 @@ public class RabbitmqEventGateway extends AbstractEventGateway {
                 .stream()
                 .forEach(header ->  message.getMessageProperties().setHeader(header.getKey(),header.getValue()));
 
-        message.getMessageProperties().setMessageId((String) getHeaders(event).get(EventBusConstants.EVENT_HEADER_EVENT_ID));
+        message.getMessageProperties().setMessageId((String) getHeaders(event).get(EventHeaders.EVENT_HEADER_EVENT_ID));
     }
 
 }
